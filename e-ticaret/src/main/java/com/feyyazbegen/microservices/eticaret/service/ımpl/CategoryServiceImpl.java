@@ -3,12 +3,14 @@ package com.feyyazbegen.microservices.eticaret.service.ımpl;
 import com.feyyazbegen.microservices.eticaret.converter.CategoryConverter;
 import com.feyyazbegen.microservices.eticaret.entities.Categories;
 import com.feyyazbegen.microservices.eticaret.repository.CategoryRepository;
+import com.feyyazbegen.microservices.eticaret.request.CategoryRequest;
 import com.feyyazbegen.microservices.eticaret.response.CategoryResponse;
 import com.feyyazbegen.microservices.eticaret.service.CategoryService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -31,7 +33,10 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<Categories> getAllCategories() {
-        return repository.findAll();
+    public List<CategoryResponse> getAllCategories() {
+        List<Categories> categories = repository.findAll();
+        List<CategoryResponse> collect = categories.stream().map(categoryConverter::convertToCategoryResponse).collect(Collectors.toList());
+        return collect;
     }
+
 }

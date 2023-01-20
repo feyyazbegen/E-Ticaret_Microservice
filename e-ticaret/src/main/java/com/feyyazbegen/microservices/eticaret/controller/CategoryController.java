@@ -1,12 +1,11 @@
 package com.feyyazbegen.microservices.eticaret.controller;
 
+import com.feyyazbegen.microservices.eticaret.converter.CategoryConverter;
 import com.feyyazbegen.microservices.eticaret.entities.Categories;
+import com.feyyazbegen.microservices.eticaret.request.CategoryRequest;
 import com.feyyazbegen.microservices.eticaret.response.CategoryResponse;
 import com.feyyazbegen.microservices.eticaret.service.CategoryService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,9 +14,11 @@ import java.util.List;
 public class CategoryController {
 
     private final CategoryService categoryService;
+    private final CategoryConverter categoryConverter;
 
-    public CategoryController(CategoryService categoryService) {
+    public CategoryController(CategoryService categoryService, CategoryConverter categoryConverter) {
         this.categoryService = categoryService;
+        this.categoryConverter = categoryConverter;
     }
 
     @GetMapping("/{categoryId}")
@@ -26,7 +27,10 @@ public class CategoryController {
     }
 
     @GetMapping("/")
-    public List<Categories> getAllCategories(){
+    public List<CategoryResponse> getAllCategories(){
         return categoryService.getAllCategories();
     }
+
+
+
 }
