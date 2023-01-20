@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Table(name = "category",schema = "e-ticaret")
-public class Category {
+public class Categories {
 
     @Id
     @Column(name = "category_id")
