@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity
@@ -23,9 +22,5 @@ public class Categories {
 
     @Column(name = "category_name")
     private String categoryName;
-
-    @OneToMany(mappedBy = "category")
-    private List<Product> products;
-
 
 }
