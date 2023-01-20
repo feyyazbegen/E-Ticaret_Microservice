@@ -35,8 +35,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public List<CategoryResponse> getAllCategories() {
         List<Categories> categories = repository.findAll();
-        List<CategoryResponse> collect = categories.stream().map(categoryConverter::convertToCategoryResponse).collect(Collectors.toList());
-        return collect;
+        return categories.stream().map(categoryConverter::convertToCategoryResponse).collect(Collectors.toList());
     }
 
 }
