@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/E-Ticaret.iml" filepath="$PROJECT_DIR$/.idea/E-Ticaret.iml" />
       <module fileurl="file://$PROJECT_DIR$/e-ticaret/e-ticaret.iml" filepath="$PROJECT_DIR$/e-ticaret/e-ticaret.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/eureka-server/eureka-server.iml" />
     </modules>
   </component>
 </project>
