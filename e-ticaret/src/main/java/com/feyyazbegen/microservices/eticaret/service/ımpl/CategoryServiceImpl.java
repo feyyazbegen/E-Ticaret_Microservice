@@ -7,6 +7,7 @@ import com.feyyazbegen.microservices.eticaret.response.CategoryResponse;
 import com.feyyazbegen.microservices.eticaret.service.CategoryService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,9 +24,14 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryResponse getByCategoryId(Long categoryId) {
         Optional<Categories> byId = repository.findById(categoryId);
-        if (!byId.isPresent()){
+        if (!byId.isPresent()) {
             throw new RuntimeException("Kategory Bulunamadı");
         }
         return categoryConverter.convertToCategoryResponse(byId.get());
+    }
+
+    @Override
+    public List<Categories> getAllCategories() {
+        return repository.findAll();
     }
 }
