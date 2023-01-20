@@ -1,7 +1,6 @@
 package com.feyyazbegen.microservices.eticaret.controller;
 
 import com.feyyazbegen.microservices.eticaret.converter.CategoryConverter;
-import com.feyyazbegen.microservices.eticaret.entities.Categories;
 import com.feyyazbegen.microservices.eticaret.request.CategoryRequest;
 import com.feyyazbegen.microservices.eticaret.response.CategoryResponse;
 import com.feyyazbegen.microservices.eticaret.service.CategoryService;
@@ -31,6 +30,9 @@ public class CategoryController {
         return categoryService.getAllCategories();
     }
 
-
+    @PostMapping("/")
+    public CategoryResponse addCategory(@RequestBody CategoryRequest request){
+        return categoryService.addCategory(request);
+    }
 
 }

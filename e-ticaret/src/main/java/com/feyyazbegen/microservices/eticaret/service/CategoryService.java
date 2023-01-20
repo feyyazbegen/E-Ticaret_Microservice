@@ -1,6 +1,5 @@
 package com.feyyazbegen.microservices.eticaret.service;
 
-import com.feyyazbegen.microservices.eticaret.entities.Categories;
 import com.feyyazbegen.microservices.eticaret.request.CategoryRequest;
 import com.feyyazbegen.microservices.eticaret.response.CategoryResponse;
 
@@ -12,4 +11,5 @@ public interface CategoryService {
 
      List<CategoryResponse> getAllCategories();
 
+     CategoryResponse addCategory(CategoryRequest request);
 }

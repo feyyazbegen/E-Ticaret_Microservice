@@ -38,4 +38,12 @@ public class CategoryServiceImpl implements CategoryService {
         return categories.stream().map(categoryConverter::convertToCategoryResponse).collect(Collectors.toList());
     }
 
+    @Override
+    public CategoryResponse addCategory(CategoryRequest request) {
+        Categories categories = new Categories();
+        categories.setCategoryName(request.getCategoryName());
+        repository.save(categories);
+        return categoryConverter.convertToCategoryResponse(categories);
+    }
+
 }
