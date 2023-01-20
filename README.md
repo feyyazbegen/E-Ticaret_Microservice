@@ -1,0 +1,1 @@
+# Microservice mimarisinde örnek bir eticaret projesi.
