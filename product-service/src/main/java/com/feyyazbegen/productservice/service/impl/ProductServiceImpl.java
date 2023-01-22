@@ -10,6 +10,8 @@ import com.feyyazbegen.productservice.response.ProductResponse;
 import com.feyyazbegen.productservice.service.ProductService;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ProductServiceImpl implements ProductService {
 
@@ -33,5 +35,14 @@ public class ProductServiceImpl implements ProductService {
         Product product = productConverter.convertToProduct(request);
         productRepository.save(product);
         return productConverter.convertToProductResponse(product, byCategoryId);
+    }
+
+    @Override
+    public ProductResponse getProduct(Long productId) {
+        Optional<Product> byId = productRepository.findById(productId);
+        if (!byId.isPresent()){
+            throw new RuntimeException("Post Bulunamadı");
+        }
+        return productConverter.convertToProductResponse(byId.get());
     }
 }

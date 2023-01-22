@@ -6,4 +6,6 @@ import com.feyyazbegen.productservice.response.ProductResponse;
 public interface ProductService {
 
     ProductResponse addProduct(CreateProductRequest request);
+
+    ProductResponse getProduct(Long productId);
 }
