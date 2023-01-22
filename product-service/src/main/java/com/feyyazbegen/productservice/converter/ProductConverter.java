@@ -22,16 +22,16 @@ public class ProductConverter {
         ProductResponse productResponse= new ProductResponse();
         productResponse.setProductName(product.getProductName());
         productResponse.setCategory(categoryResponse);
-        productResponse.setBrand(productResponse.getBrand());
-        productResponse.setModel(productResponse.getModel());
+        productResponse.setBrand(product.getBrand());
+        productResponse.setModel(product.getModel());
         return productResponse;
     }
 
     public ProductResponse convertToProductResponse(Product product){
         ProductResponse productResponse = new ProductResponse();
         productResponse.setProductName(product.getProductName());
-        productResponse.setBrand(productResponse.getBrand());
-        productResponse.setModel(productResponse.getModel());
+        productResponse.setBrand(product.getBrand());
+        productResponse.setModel(product.getModel());
         return productResponse;
     }
 }

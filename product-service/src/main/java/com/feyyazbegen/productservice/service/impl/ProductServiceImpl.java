@@ -41,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductResponse getProduct(Long productId) {
         Optional<Product> byId = productRepository.findById(productId);
         if (!byId.isPresent()){
-            throw new RuntimeException("Post Bulunamadı");
+            throw new RuntimeException("Product Bulunamadı");
         }
         return productConverter.convertToProductResponse(byId.get());
     }
