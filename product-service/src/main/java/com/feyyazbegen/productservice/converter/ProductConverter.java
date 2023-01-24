@@ -29,9 +29,12 @@ public class ProductConverter {
 
     public ProductResponse convertToProductResponse(Product product){
         ProductResponse productResponse = new ProductResponse();
+        productResponse.setId(product.getId());
         productResponse.setProductName(product.getProductName());
         productResponse.setBrand(product.getBrand());
         productResponse.setModel(product.getModel());
+        productResponse.setPrice(product.getPrice());
         return productResponse;
     }
+
 }

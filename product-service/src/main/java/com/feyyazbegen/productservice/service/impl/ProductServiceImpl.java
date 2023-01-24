@@ -10,7 +10,9 @@ import com.feyyazbegen.productservice.response.ProductResponse;
 import com.feyyazbegen.productservice.service.ProductService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -29,7 +31,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductResponse addProduct(CreateProductRequest request) {
         Long categoryId = request.getCategoryId();
         CategoryResponse byCategoryId = categoryServiceProxy.getByCategoryId(categoryId);
-        if (byCategoryId == null){
+        if (byCategoryId == null) {
             throw new RuntimeException("İlgili Kategori Bulunamadı");
         }
         Product product = productConverter.convertToProduct(request);
@@ -40,9 +42,18 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductResponse getProduct(Long productId) {
         Optional<Product> byId = productRepository.findById(productId);
-        if (!byId.isPresent()){
+        if (!byId.isPresent()) {
             throw new RuntimeException("Product Bulunamadı");
         }
         return productConverter.convertToProductResponse(byId.get());
+    }
+
+    @Override
+    public List<ProductResponse> getProductByCategoryId(Long categoryId) {
+        List<Product> byProductCategoryId = productRepository.findByProductCategoryId(categoryId);
+        if (byProductCategoryId.isEmpty()){
+            throw new RuntimeException("Kategori bulunamadı");
+        }
+        return byProductCategoryId.stream().map(productConverter::convertToProductResponse).collect(Collectors.toList());
     }
 }
